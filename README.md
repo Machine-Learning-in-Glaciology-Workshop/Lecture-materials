@@ -35,7 +35,7 @@ The following contents are covered:
 *Authors:* Benjamin Robson, Konstantin Maslov and Thomas Schellenberger
 
 The three presentations will cover 
-1. Remote Sensing in Glaciology Remote Sensing in Glaciology – the traditional basics
+1. Remote Sensing in Glaciology Remote Sensing in Glaciology – the traditional basics
 2. Random Forest and Deep learning image classification for Glacier Mapping
 3. Cryospheric Mapping with Remote Sensing - an overview of the problems, data and methods (with a focus on OBIA and debris-covered glaciers
 
