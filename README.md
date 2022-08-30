@@ -49,7 +49,7 @@ The three presentations will cover:
   - Mapping debris-covered glaciers
 
 - **Project description**
-  The students will have the opportunity to work to mapping glaciers in high mountain asia using Sentinel-1 and Sentinel-2 data and of pre-trained random forest and DL models as well as OBIA. They are encouraged to tune and train the random forest models with a number of different input features and to compare the performance of the three approaches statistically.
+  The students will have the opportunity to work to mapping glaciers in High Mountain Asia using Sentinel-1 and Sentinel-2 data and pre-trained random forest and DL models as well as OBIA. They are encouraged to tune and train additional random forest models with a number of different input features and to compare the performance of the three approaches statistically.
   
 ## Lecture 3: Introduction to JupyterHub and Git
 
