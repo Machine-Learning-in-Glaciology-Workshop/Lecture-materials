@@ -36,7 +36,7 @@ The following contents are covered:
 
 The three presentations will cover:
 - **Remote Sensing in Glaciology Remote Sensing in Glaciology – the traditional basics**
-  - Intro Optical and SAR remote sensing
+  - Intro Optical and SAR remote sensing and their applications in Glaciology
   - Glacier extend mapping
   - Glacier zone mapping
   - Challenges
