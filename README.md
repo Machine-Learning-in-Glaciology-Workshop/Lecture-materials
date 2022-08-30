@@ -34,12 +34,23 @@ The following contents are covered:
 
 *Authors:* Benjamin Robson, Konstantin Maslov and Thomas Schellenberger
 
-The three presentations will cover 
-1. Remote Sensing in Glaciology Remote Sensing in Glaciology – the traditional basics
-2. Random Forest and Deep learning image classification for Glacier Mapping
-3. Cryospheric Mapping with Remote Sensing - an overview of the problems, data and methods (with a focus on OBIA and debris-covered glaciers
+The three presentations will cover:
+- **Remote Sensing in Glaciology Remote Sensing in Glaciology – the traditional basics**
+  - Intro Optical and SAR remote sensing
+  - Glacier extend mapping
+  - Glacier zone mapping
+  - Challenges
+- **Random Forest and Deep learning image classification for Glacier Mapping**
+  - Intro to ML image classification
+  - Random Forest
+  - Deep learning
+- **Cryospheric Mapping with Remote Sensing - an overview of the problems, data and methods (with a focus on OBIA and debris-covered glaciers**
+  - Object based image analysis
+  - Mapping debris-covered glaciers
 
-
+- **Project description**
+  The students will have the opportunity to work to mapping glaciers in high mountain asia using Sentinel-1 and Sentinel-2 data and of pre-trained random forest and DL models as well as OBIA. They are encouraged to tune and train the random forest models with a number of different input features and to compare the performance of the three approaches statistically.
+  
 ## Lecture 3: Introduction to JupyterHub and Git
 
 *Authors:* Facundo Sapienza and Ellianna Abrahams
