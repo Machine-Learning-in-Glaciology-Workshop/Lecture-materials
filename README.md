@@ -54,3 +54,7 @@ The three presentations will cover:
 ## Lecture 3: Introduction to JupyterHub and Git
 
 *Authors:* Facundo Sapienza and Ellianna Abrahams
+
+## Lecture 4: Understanding Statistical Methods for the Sciences
+
+*Author:* Ellianna Abrahams
