@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>An Interactive Git Tutorial &#8212; Machine Learning and Glaciology Workshop</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="A quick, practical intro to the Jupyter Notebook" href="Intro_Jupyter.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="Intro_Hub.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/finse.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning and Glaciology Workshop</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Instructor notes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Computing
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   An Interactive Git Tutorial
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_Jupyter.html">
+   A quick, practical intro to the Jupyter Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_iPython.html">
+   IPython: beyond plain Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Intro_Environments.html">
+   Conda environment and local installation
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Computing/Intro_Git.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FComputing/Intro_Git.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Computing/Intro_Git.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-things-first-git-must-be-configured-before-first-use">
+   First things first: git must be configured before first use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initialization">
+     Initialization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#clone">
+       clone
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fork">
+       fork
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-changes">
+     Making changes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add">
+       add
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#commit">
+       commit
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#push">
+       push
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branches">
+   Branches
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-conflicts-with-jupyter-notebooks">
+     Solving conflicts with Jupyter notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pull-request">
+   Pull Request
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-reviews">
+     Code reviews
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recovering-past-versions">
+   Recovering past versions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#restoring-old-versions">
+     Restoring old versions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recovering-deleted-files">
+     Recovering deleted files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-more-git-commands">
+   Some more git commands
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>An Interactive Git Tutorial</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-things-first-git-must-be-configured-before-first-use">
+   First things first: git must be configured before first use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initialization">
+     Initialization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#clone">
+       clone
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fork">
+       fork
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-changes">
+     Making changes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add">
+       add
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#commit">
+       commit
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#push">
+       push
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branches">
+   Branches
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-conflicts-with-jupyter-notebooks">
+     Solving conflicts with Jupyter notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pull-request">
+   Pull Request
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-reviews">
+     Code reviews
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recovering-past-versions">
+   Recovering past versions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#restoring-old-versions">
+     Restoring old versions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recovering-deleted-files">
+     Recovering deleted files
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-more-git-commands">
+   Some more git commands
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="an-interactive-git-tutorial">
+<h1>An Interactive Git Tutorial<a class="headerlink" href="#an-interactive-git-tutorial" title="Permalink to this headline">#</a></h1>
+<p>Contents created by Fernando Pérez and Facundo Sapienza for the course <a class="reference external" href="https://ucb-stat-159-s22.github.io/site/overview.html">Collaborative and Reproducible Data Science</a>.</p>
+<p>In this notebook, you will find all the needed information to work collaboratively using version control with git.</p>
+<p>Learning goals:</p>
+<ul class="simple">
+<li><p>Introduction to version control and git workflows</p></li>
+<li><p>Credential management</p></li>
+<li><p>Working with collaborators, pull requests</p></li>
+</ul>
+<section id="first-things-first-git-must-be-configured-before-first-use">
+<h2>First things first: git must be configured before first use<a class="headerlink" href="#first-things-first-git-must-be-configured-before-first-use" title="Permalink to this headline">#</a></h2>
+<p>The minimal amount of configuration for git to work without pestering you is to tell it who you are. You should run a version of these commands in your shell:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;Ozzy Osbourne&quot;</span>
+git config --global user.email <span class="s2">&quot;master.of.reality@metal.edu&quot;</span>
+</pre></div>
+</div>
+<p>And while we’re at it, we also turn on the use of color, which is very useful</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global color.ui <span class="s2">&quot;auto&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>This is a companion notebook with code to follow <a class="reference external" href="https://docs.google.com/presentation/d/1YlM3boYLE8DwbxGNO3ZVVt3e9gEoBgD1uc9RtItUYCU/edit?usp=sharing">the visuals of this presentation</a>.
+This visialization shows a basic workflow of actions that you will encounter when working with git.</p>
+<p><strong>What is the difference between git and GitHub?</strong></p>
+<blockquote>
+<div><p>Answer.</p>
+</div></blockquote>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">#</a></h3>
+<p>You can initialize a new repository by creating a new directory (<code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">&lt;directory</span> <span class="pre">name&gt;</span></code>) from the terminal, moving in to the new folder (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;directory</span> <span class="pre">name&gt;</span></code>) and initializing the repository with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>. This will create the repository structure inside that folder that will allow us to version control the files we connect with git.</p>
+<p>If instead you have an exisiting repository, you can directly clone it or fork it to your GitHub.</p>
+<section id="clone">
+<h4>clone<a class="headerlink" href="#clone" title="Permalink to this headline">#</a></h4>
+<p>When cloning a repository, you are getting a local version of an existing repository. When making changes (commits and push) to this repository, you will change the original repository you have cloned. To clone an exisiting repository,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone &lt;repository url&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;repository</span> <span class="pre">url&gt;</span></code> can be found directly in the repository GitHub page:</p>
+<p><img alt="image.png" src="../_images/git_clone.png" /></p>
+</section>
+<section id="fork">
+<h4>fork<a class="headerlink" href="#fork" title="Permalink to this headline">#</a></h4>
+<p>Forking an exisiting repository means to create a copy of such repository under your GitHub accounts. In this way, there are two different repositories and this allows you to make changes to your copy of the repository without affecting the integrity of the original repository. This is useful and recommendable when working collaborativelly in a project. Integrating your changes to the original repository can be done by doing a pull request, which we will explore later in this tutorial. In order to fork an exisiting repository, go to the GitHub page of the repository and in the upper right corner you can find the buttom <code class="docutils literal notranslate"><span class="pre">Fork</span></code></p>
+<p><img alt="image.png" src="../_images/git_fork.png" /></p>
+<p>and then create a copy under your personal GitHub account</p>
+<p><img alt="image.png" src="../_images/git_fork2.png" /></p>
+</section>
+</section>
+<section id="making-changes">
+<h3>Making changes<a class="headerlink" href="#making-changes" title="Permalink to this headline">#</a></h3>
+<p>In order to keep track of the changes you make to the files in the repositrory, you need to notify git about which files and which changes do you want to keep track of. The workflow for doing this consists in three commands you execute from the command line</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add market_list.txt
+git commit -m<span class="s1">&#39;I need milk and cereals&#39;</span>
+git push
+</pre></div>
+</div>
+<p>A few comments about these commands</p>
+<section id="add">
+<h4>add<a class="headerlink" href="#add" title="Permalink to this headline">#</a></h4>
+<p>We need to specify the names of the files we want to keep changes of. You can instead use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">--all</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">*</span></code> for adding all the files in the repository, but this is ussualy bad practice and dangerours in general (unless this is your first <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>).</p>
+</section>
+<section id="commit">
+<h4>commit<a class="headerlink" href="#commit" title="Permalink to this headline">#</a></h4>
+<p>In the commit above, we  used the <code class="docutils literal notranslate"><span class="pre">-m</span></code> flag to specify a message at the command line.  If we don’t do that, git will open the editor we specified in our configuration above and require that we enter a message.  By default, git refuses to record changes that don’t have a message to go along with them (though you can obviously ‘cheat’ by using an empty or meaningless string: git only tries to facilitate best practices, it’s not your nanny).</p>
+</section>
+<section id="push">
+<h4>push<a class="headerlink" href="#push" title="Permalink to this headline">#</a></h4>
+<p>These command is no really necessary to execute after each commit. When create a commit message, you notify git about changes in some files. This changes are keep recorder in your <em>local</em> version of the repository (the one you have access thought the machine you are using). When you <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>, you sincronize the local version of your repository with the <em>remote</em> version of the repository, that is, the version storaged online in GitHub. Usually, you do a push when you want your changes to be reflected in GitHub, for example, when you want to share the changes with your collaborators or when you finish your day of work and want to be sure that a remote copy of you work is keep safe.</p>
+<p><strong>Remote repositories</strong></p>
+<blockquote>
+<div><p>A <em>remote repository</em>: is a pointer to another copy of the repository that lives on a different location.  This can be simply a different path on the filesystem or a server on the internet.
+For this discussion, we’ll be using remotes hosted on the <a class="reference external" href="http://github.com">GitHub.com</a> service, but you can equally use other services like <a class="reference external" href="http://bitbucket.org">BitBucket</a> or <a class="reference external" href="http://gitorious.org">Gitorious</a> as well as host your own. You can see the repote repositories sincronozed with you reposotory using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> or instead by looking at all the branches of you reposotory, enither local or remote, with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-all</span></code>.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="branches">
+<h2>Branches<a class="headerlink" href="#branches" title="Permalink to this headline">#</a></h2>
+<p>A branch is simply a label for the current commit in a sequence of ongoing commits.
+There can be multiple branches alive at any point in time; the working directory is the state of a special pointer called HEAD. Once new commits are made on a branch, HEAD and the branch label move with the new commits:</p>
+<p><img alt="image.png" src="../_images/branch-par.png" /></p>
+<p><strong>Why to work in different branches?</strong></p>
+<blockquote>
+<div><p>Working in different branches allows you to develop code without altering the main structure and code of the repository. Branches can be merged and the changes you implemented in a new branches can be incorporated to the main code. Having exploratory code in a different branch allows you to explore ideas without affecting the integrity of the code at the same time you can version control these changes.</p>
+</div></blockquote>
+<p>The basic git command to move between branches is <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">switch</span></code>. This allows you to both create a new branch (adding the flag <code class="docutils literal notranslate"><span class="pre">-c</span></code>) and move to it and comeback to the main branch.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git switch -c dev
+</pre></div>
+</div>
+<p>Once we want to comeback to the main branch, we can simply use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git switch main
+</pre></div>
+</div>
+<p>In order to merge two branches, we first move to the branch where we want to incorporate the changes and then we use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git merge dev -m<span class="s1">&#39;merging great new developments&#39;</span>
+</pre></div>
+</div>
+<p>Once you are done with a branch, you can simply delete it with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">--delete</span> <span class="pre">dev</span></code>.</p>
+<p><img alt="image.png" src="../_images/merge.png" /></p>
+<section id="solving-conflicts-with-jupyter-notebooks">
+<h3>Solving conflicts with Jupyter notebooks<a class="headerlink" href="#solving-conflicts-with-jupyter-notebooks" title="Permalink to this headline">#</a></h3>
+<p>While git is very good at merging, if two different branches modify the same file in the same location, it simply can’t decide which change should prevail.  At that point, human intervention is necessary to make the decision.  Git will help you by marking the location in the file that has a problem, but it’s up to you to resolve the conflict.</p>
+<p><strong>TO BE COMPLETED</strong></p>
+</section>
+</section>
+<section id="pull-request">
+<h2>Pull Request<a class="headerlink" href="#pull-request" title="Permalink to this headline">#</a></h2>
+<p>When merging two different branches in git, we are working in the same repository. However, when working in developing code we usually have different forks of the same repository which live under different locations (eg, you personal GitHub account). In order to incorporate changes from one repository to another we use GitHub’s pull request. Doing this is a very simple procedure and you can find a step-by-step of how to do this in (this post)[<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request</a>].</p>
+<p><img alt="image.png" src="../_images/git_PR.png" /></p>
+<p>Once created, you can add further comments about the changes that the pull request will incorportate. At this point, you can also assign project member to review and approved your changes.</p>
+<p><img alt="image.png" src="../_images/git_PR2.png" /></p>
+<section id="code-reviews">
+<h3>Code reviews<a class="headerlink" href="#code-reviews" title="Permalink to this headline">#</a></h3>
+<p>The main advantage of pull request in collaborative projects is that it helps review incoming changes in the main repository. This is normally done through a code review, which is normally done by a separate user who can provide a critical eye on the changes being pushed. During the code review, comments can be added, and individual (lines or file) changes can be accepted or discarded in order to help decision making. The author of the pull request then can perform further changes in new commits, update the pull request and iterate through this process until everyone is happy.</p>
+<p>Another important part of this process, which will not be covered in this material, is the fact that pull requests allow triggering integration tests in a repository, which allow tracking any breaking changes into the codebase.</p>
+</section>
+</section>
+<section id="recovering-past-versions">
+<h2>Recovering past versions<a class="headerlink" href="#recovering-past-versions" title="Permalink to this headline">#</a></h2>
+<p>Sometimes we make accidental changes to some of the files in a repository, or maybe we just want to come back to a previous version. In any case, it is easy to restore or even recover old versions of files that have been track in a commit message.</p>
+<section id="restoring-old-versions">
+<h3>Restoring old versions<a class="headerlink" href="#restoring-old-versions" title="Permalink to this headline">#</a></h3>
+<p>You can restore previous version of such file by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit&gt;</span> <span class="pre">&lt;filename&gt;</span></code>. You will need to specify the stage at which you want to restore the file. You can do this by looking at the log of the repository (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">slog</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--all</span></code>, …): this is why commit messages are so important!</p>
+<p>Observation: you can also see old versions of your files directly on GitHub, in case you need to inspect previous versions of files.</p>
+</section>
+<section id="recovering-deleted-files">
+<h3>Recovering deleted files<a class="headerlink" href="#recovering-deleted-files" title="Permalink to this headline">#</a></h3>
+<p>Depending if you made a commit message after deleting the file, you may need to use one of the following commands:</p>
+<ol class="simple">
+<li><p>If you haven’t commit your changes, you can recover the file just by coming back to the previous snapshot of the repository by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">HEAD</span></code></p></li>
+<li><p>Now, if you make a commit after removing the changes, you need to do a little bit more of work. Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">slog</span> <span class="pre">--</span> <span class="pre">&lt;filename&gt;</span></code> to see all the history associated to the file you removed and then use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit&gt;</span> <span class="pre">--</span> <span class="pre">&lt;filename&gt;</span></code> to recover it</p></li>
+</ol>
+</section>
+</section>
+<section id="some-more-git-commands">
+<h2>Some more git commands<a class="headerlink" href="#some-more-git-commands" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>: What has been commited so far?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>: What have I changed?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>: moving and removing files</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Computing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Intro_Hub.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">&lt;no title&gt;</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Intro_Jupyter.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">A quick, practical intro to the Jupyter Notebook</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Instructors<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
