@@ -1,0 +1,10 @@
+format: jb-book
+root: README
+parts:
+- caption: Computing
+  chapters:
+  - file: Computing/Intro_Hub
+  - file: Computing/Intro_Git
+  - file: Computing/Intro_Jupyter
+  - file: Computing/Intro_iPython
+  - file: Computing/Intro_Environments
