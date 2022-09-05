@@ -344,22 +344,27 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Conda environment and local installation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conda-environments">
    Conda environments
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#local-installation-jupyterlab-in-your-machine">
    Local installation: JupyterLab in your machine
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-installation-and-configuration-of-miniconda">
      Step 1: Installation and configuration of miniconda
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-setting-the-hub-environment-in-local">
      Step 2: Setting the Hub environment in local
     </a>
@@ -385,22 +390,27 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Conda environment and local installation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conda-environments">
    Conda environments
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#local-installation-jupyterlab-in-your-machine">
    Local installation: JupyterLab in your machine
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-installation-and-configuration-of-miniconda">
      Step 1: Installation and configuration of miniconda
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-setting-the-hub-environment-in-local">
      Step 2: Setting the Hub environment in local
     </a>
@@ -425,15 +435,23 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing environments with Anaconda</a></p></li>
 <li><p><a class="reference external" href="https://ucb-stat-159-s22.github.io/site/overview.html">Collaborative and Reproducible Data Science course</a></p></li>
 </ul>
-<section id="conda-environments">
-<h2>Conda environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">#</a></h2>
-<p>Notes on conda…</p>
 </section>
-<section id="local-installation-jupyterlab-in-your-machine">
-<h2>Local installation: JupyterLab in your machine<a class="headerlink" href="#local-installation-jupyterlab-in-your-machine" title="Permalink to this headline">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="conda-environments">
+<h1>Conda environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">#</a></h1>
+<p>Managing conda environment in Python is a very useful skill that allows you to have multiple working spaces in the same machine, from where you can run different libraries or even different version of Python. It is usually recommendable to have a <code class="docutils literal notranslate"><span class="pre">base</span></code> environment with a default version of Python and standard libraries, such as numpy, pandas and matplotlib, and then create new virtual environmnets when working is specific projects.</p>
+<p>In the JupyterHub, we have already setted up a series of conda environments that you can use during the course. You can see all the availables environments by oppening a new terminal and entering <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code>. In order to activate a new environment (for example, in case you want to add a package), you can use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">&lt;environment</span> <span class="pre">name&gt;</span></code>. You will find these environments listed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">notebook</span></code>: These are default environmnts you can use to explore.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Finse_MB_oggm</span></code>: Virtual environment use for Project No1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Finse_CNN</span></code>: Virtual environment use for Project No2
+When opening a Jupyter notebook, be sure the kernel is seted up with the right virtual envrionment. In order to do so, you can go to the upper right corner of the notebook, select the kernel option and click the option with the desired name of the conda virtual environment.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="local-installation-jupyterlab-in-your-machine">
+<h1>Local installation: JupyterLab in your machine<a class="headerlink" href="#local-installation-jupyterlab-in-your-machine" title="Permalink to this headline">#</a></h1>
 <p>The goal of these notes is to help you setup your local machine with the JupyterLab we are using for the workshop. Even if you already have conda installed in your local machine, it’s not a bad idea to reset the conda install. The idea is to have a very simplistic <code class="docutils literal notranslate"><span class="pre">base</span></code> environment from which you can launch JupyterLab and connect it to the kernels associated to other environmnets you create (eg, the ones used during the projects).</p>
 <section id="step-1-installation-and-configuration-of-miniconda">
-<h3>Step 1: Installation and configuration of miniconda<a class="headerlink" href="#step-1-installation-and-configuration-of-miniconda" title="Permalink to this headline">#</a></h3>
+<h2>Step 1: Installation and configuration of miniconda<a class="headerlink" href="#step-1-installation-and-configuration-of-miniconda" title="Permalink to this headline">#</a></h2>
 <p>Instead of installing conda with the full package management system and many Python libraries, we are going to install <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, a minimalist version of conda that included the package management tool and a small number of useful packages. If you already have conda installed in your machine, you may not need to do this. An easy way to check if conda is installed in your computer is by entering <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--help</span></code> in the terminal. You are also welcome to install conda from zero by removing all conda directories and installing miniconda.</p>
 <p>You can install the last version of miniconda depending on you operating system from the <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda website</a>. For unix machines (Linux, MacOS), a more simple way of doing this is by using the <code class="docutils literal notranslate"><span class="pre">wget</span></code> command followed by the installer link (<a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/install/macos.html#install-macos-silent">silent installation mode</a>). For example, for a MacOSX machine (without M1 chip) you can use</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
@@ -470,7 +488,7 @@ conda config --set channel_priority strict
 <p>If this doesn’t work, you can also try <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">mamba</span> <span class="pre">-n</span> <span class="pre">base</span> <span class="pre">-c</span> <span class="pre">conda-forge</span></code>. If this still doesn’t work, you can always replace <code class="docutils literal notranslate"><span class="pre">mamba</span></code> by <code class="docutils literal notranslate"><span class="pre">conda</span></code> in the following section, but it will be much slower and unefficient.</p>
 </section>
 <section id="step-2-setting-the-hub-environment-in-local">
-<h3>Step 2: Setting the Hub environment in local<a class="headerlink" href="#step-2-setting-the-hub-environment-in-local" title="Permalink to this headline">#</a></h3>
+<h2>Step 2: Setting the Hub environment in local<a class="headerlink" href="#step-2-setting-the-hub-environment-in-local" title="Permalink to this headline">#</a></h2>
 <p>Once you have installed miniconda, you can create virtual environments from a <code class="docutils literal notranslate"><span class="pre">yml</span></code> file just as we did in the Hub. As a first step, we are going to create a virtual environment with the same configuration we have in the Hub. The configuration file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> for the Hub is available at the <a class="reference external" href="https://github.com/UCB-stat-159-s22/site">site repository for the course</a>. Before using <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> to create a new environment, take a look to the text file and try to identify parts of the file that are not necessary or irrelevant to create the Hub environment; you will have to remove the last lines of the file that include the pip instructions for the requirements of the JupyterBook we use for the website, which are not necessary for the creation of the virtual environment.</p>
 <p>Then, you can create a the virtual environment with</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba env create -f environment.yml
@@ -488,7 +506,6 @@ mamba install ipykernel
 </pre></div>
 </div>
 <p>Now, if we come back to <code class="docutils literal notranslate"><span class="pre">base</span></code> and launch Jupyter Lab with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code>, we should see the option creating a new notebook with the <code class="docutils literal notranslate"><span class="pre">ML+Glaciology</span></code> kernel.</p>
-</section>
 </section>
 </section>
 
